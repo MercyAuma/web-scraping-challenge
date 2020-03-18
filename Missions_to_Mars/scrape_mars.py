@@ -12,7 +12,7 @@ import os
 def init_browser():
     """ Connects path to chromedriver """
     
-    executable_path = {'executable_path': 'C:\Users\Mercy\Downloads\chromedriver'}
+    executable_path = {'executable_path': '/Users/Mercy/Downloads/chromedriver'}
     return Browser("chrome", **executable_path, headless=True)
 
 
@@ -94,7 +94,7 @@ def scrape():
     twitter_result = twitter_soup.find('div', class_='js-tweet-text-container').text.strip()
     #print(results_tweets)
 
-     listings["final mars weather: "] = twitter_result
+    listings["final mars weather: "] = twitter_result
 
     # task 4
     #   scrape the table containing facts about the planet including Diameter, Mass, etc
@@ -163,7 +163,7 @@ def scrape():
         hemisphere_image_urls.append(hemisphere_dict)
     
     # Store hemisphere image urls to dictionary
-    listings['hemisphere_image_urls'] = hemisphere_image_urls
+        listings['hemisphere_image_urls'] = hemisphere_image_urls
 
     
     return listings
