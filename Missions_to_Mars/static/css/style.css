@@ -1,0 +1,27 @@
+
+ body html{
+
+  background-color: black;
+} 
+
+
+
+
+
+footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color:rgb(0, 0, 0);
+    color: white;
+    text-align: center;
+    border-top-style: solid;
+    border-top-color: white;
+    height: 40px;
+    font-size: 14px;
+    padding-top: 10px;
+    border: black;
+    color: white;
+}
+
