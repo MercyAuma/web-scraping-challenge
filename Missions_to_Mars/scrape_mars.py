@@ -101,11 +101,16 @@ def scrape_Facts():
     facts_url = 'https://space-facts.com/mars/'
     
     try:
-        facts = pd.read_html(facts_url)[0]
-        facts = facts.rename(columns={0:'Description', 1: 'value'})
-        facts = facts.set_index('Description')
-        facts_html = facts.to_html()
-        listings['mars_facts'] = facts_html
+        facts = pd.read_html(facts_url)
+        mars_df = facts[0]
+        mars_df.columns = ['Description', 'Value']
+        mars_df.set_index('Description', inplace=True)
+
+        # mars_facts = mars_df.to_html()
+        # mars_facts.replace("\n","")
+        # mars_df.to_html('mars_facts.html')
+        
+        listings['mars_facts'] = mars_df
         
     except AttributeError as e:
         print(e)
