@@ -97,23 +97,29 @@ def scrape_Image():
 
     # task 4
 def scrape_Facts():
-    
+    browser = init_browser()
     facts_url = 'https://space-facts.com/mars/'
-    
+    browser.visit(facts_url)
+    time.sleep(1)
     try:
         facts = pd.read_html(facts_url)
         mars_df = facts[0]
         mars_df.columns = ['Description', 'Value']
         mars_df.set_index('Description', inplace=True)
 
-        # mars_facts = mars_df.to_html()
-        # mars_facts.replace("\n","")
-        # mars_df.to_html('mars_facts.html')
+        mars_facts = mars_df.to_html()
+        mars_facts.replace("\n","")
+        mars_df.to_html('mars_facts.html')
         
-        listings['mars_facts'] = mars_df
+        listings['mars_facts'] = mars_facts
+
+        print('Mars Facts:'+ mars_facts)
         
     except AttributeError as e:
         print(e)
+
+    finally:
+        browser.quit()
         
     #task 5
 def scrape_Hemispheres():
